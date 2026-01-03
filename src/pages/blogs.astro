@@ -1,0 +1,19 @@
+---
+import BaseLayout from "../layouts/Layout.astro";
+import BlogCard from "../components/ui/BlogCard.astro";
+import { getBlogs } from "../lib/data";
+
+const blogs = await getBlogs();
+---
+
+<BaseLayout title="Blogs">
+  <main class="container py-20">
+    <h1 class="text-4xl font-bold mb-10">Blogs</h1>
+
+    <div class="grid gap-6 md:grid-cols-2">
+      {blogs.map(blog => (
+        <BlogCard blog={blog} />
+      ))}
+    </div>
+  </main>
+</BaseLayout>

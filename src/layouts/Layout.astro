@@ -1,22 +1,42 @@
-<!doctype html>
-<html lang="en">
-	<head>
-		<meta charset="UTF-8" />
-		<meta name="viewport" content="width=device-width" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro Basics</title>
-	</head>
-	<body>
-		<slot />
-	</body>
-</html>
+---
+import "../styles/global.css";
+import AnimatedBackground from "../react/AnimatedBackground";
+import Header from "./Header.astro";
+const { title, description } = Astro.props;
+---
 
-<style>
-	html,
-	body {
-		margin: 0;
-		width: 100%;
-		height: 100%;
-	}
-</style>
+<!DOCTYPE html>
+<html lang="en" class="h-full">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{title}</title>
+    <meta name="description" content={description} />
+  </head>
+
+  <body class="relative min-h-screen min-w-screen bg-white text-zinc-900 overflow-x-hidden">
+
+    <!-- Background -->
+    <AnimatedBackground
+      client:load
+      light={{ lineColor: "#f0f0f0", gridSize: "6rem 4rem", glowColor: "#C9EBFF" }}
+      dark={{
+        dotColor: "#ffffff11",
+        lineColor: "#ffffff10",
+        bgColor: "#0b1226",
+        dotSize: "20px"
+      }}
+      variant="grid-glow"
+    />
+
+    <!-- Main content -->
+    <main class="min-h-screen p-4 w-screen md:max-w-[90%] lg:max-w-[70%] m-auto relative z-10">
+      <!-- Header -->
+      <Header />
+
+      <!-- Page slot -->
+      <slot />
+    </main>
+
+  </body>
+</html>

@@ -1,11 +1,54 @@
 ---
-import Welcome from '../components/Welcome.astro';
-import Layout from '../layouts/Layout.astro';
+import BaseLayout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import FeaturedBlogs from "../components/FeaturedBlogs.astro";
+import FeaturedProjects from "../components/FeaturedProjects.astro";
 
-// Welcome to Astro! Wondering what to do next? Check out the Astro documentation at https://docs.astro.build
-// Don't want to use any of this? Delete everything in this file, the `assets`, `components`, and `layouts` directories, and start fresh.
+import type { Blog } from "../lib/types";
+import type { Project } from "../lib/types";
+
+
+const featuredBlogs:Blog[] = [
+  {
+    title: "Understanding JavaScript Closures",
+    description: "A complete guide to closures in JS with examples",
+    url: "https://medium.com/@aditya/closures-js",
+    thumbnail: "/images/blogs/js-closures.png",
+    topic: "JavaScript",
+    date: "02/01/2026",
+  },
+  {
+    title: "Intro to Astro for Modern Websites",
+    description: "Why Astro is great for SEO and fast websites",
+    url: "https://medium.com/@aditya/astro-intro",
+    thumbnail: "/images/blogs/astro-intro.png",
+    topic: "Web Development",
+    date: "10/12/2025",
+  },
+];
+
+const featuredProjects : Project[] = [
+  {
+    title: "Portfolio Website",
+    description: "My personal portfolio built with Astro + TailwindCSS",
+    liveUrl: "https://adityasoni.com",
+    githubUrl: "https://github.com/adityasoni/portfolio",
+    thumbnail: "/images/projects/portfolio.png",
+    date: "01/01/2026",
+  },
+  {
+    title: "Survey Dashboard",
+    description: "A dashboard for analyzing survey data",
+    liveUrl: "https://surveytool.com",
+    githubUrl: "",
+    thumbnail: "/images/projects/survey.png",
+    date: "15/12/2025",
+  },
+];
 ---
 
-<Layout>
-	<Welcome />
-</Layout>
+<BaseLayout title="Aditya Soni - Software Engineer">
+  <Hero />
+  <FeaturedProjects projects={featuredProjects} />
+  <FeaturedBlogs blogs={featuredBlogs}/>
+</BaseLayout>

@@ -1,0 +1,7 @@
+{
+
+    "tailwindCSS.includeLanguages": {
+        "astro": "\"html\"",
+        "astro-markdown": "\"html\""
+    }
+}

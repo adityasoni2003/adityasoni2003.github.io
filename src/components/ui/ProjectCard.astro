@@ -1,0 +1,41 @@
+---
+const { project } = Astro.props;
+---
+
+<div class="card p-6">
+  <img
+    src={project.thumbnail}
+    alt={project.title}
+    class="mb-4 h-40 w-full rounded-lg object-cover"
+  />
+
+  <h3 class="text-lg font-semibold">{project.title}</h3>
+
+  <p class="mt-2 text-sm text-zinc-600">
+    {project.description}
+  </p>
+
+  <div class="mt-4 flex gap-4 text-sm">
+    <a
+      href={project.liveUrl}
+      target="_blank"
+      class="text-blue-600 hover:underline"
+    >
+      Live
+    </a>
+
+    {project.githubUrl && (
+      <a
+        href={project.githubUrl}
+        target="_blank"
+        class="text-zinc-600 hover:underline"
+      >
+        GitHub
+      </a>
+    )}
+  </div>
+
+  <p class="mt-4 text-xs text-zinc-400">
+    Published on {project.date}
+  </p>
+</div>

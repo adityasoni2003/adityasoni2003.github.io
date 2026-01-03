@@ -1,0 +1,112 @@
+import { useEffect, useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Sun, Moon, Menu, X } from "lucide-react";
+
+const menuItems = [
+  { label: "Home", href: "/" },
+  { label: "Blogs", href: "/blogs" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
+];
+
+export default function HeaderClient() {
+  const [open, setOpen] = useState(false);
+  const [dark, setDark] = useState(false);
+
+  useEffect(() => {
+    const stored = localStorage.getItem("theme");
+    if (stored === "dark") {
+      document.documentElement.classList.add("dark");
+      setDark(true);
+    }
+  }, []);
+
+  function toggleTheme() {
+    const root = document.documentElement;
+    root.classList.toggle("dark");
+    const isDark = root.classList.contains("dark");
+    setDark(isDark);
+    localStorage.setItem("theme", isDark ? "dark" : "light");
+  }
+
+
+  return (
+    <header className="sticky top-0 z-50 backdrop-blur bg-white rounded-4xl shadow">
+      <div className="container flex h-16 items-center justify-between">
+
+        {/* Name */}
+        <a
+          href="/"
+          className="text-xl font-bold tracking-tight"
+          style={{ fontFamily: "Space Grotesk, sans-serif" }}
+        >
+          Aditya Soni
+        </a>
+
+        {/* Actions */}
+        <div className="flex items-center gap-1">
+
+          {/* Theme toggle */}
+          <motion.button
+            whileTap={{ scale: 0.85, rotate: 90 }}
+            onClick={toggleTheme}
+            className="p-2  cursor-pointer rounded-lg rounded-l-4xl border border-zinc-200 dark:border-zinc-700"
+          >
+            <AnimatePresence mode="wait">
+              {dark ? (
+                <motion.div
+                  key="moon"
+                  initial={{ rotate: -90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: 90, opacity: 0 }}
+                >
+                  <Moon size={18} />
+                </motion.div>
+              ) : (
+                <motion.div
+                  key="sun"
+                  initial={{ rotate: 90, opacity: 0 }}
+                  animate={{ rotate: 0, opacity: 1 }}
+                  exit={{ rotate: -90, opacity: 0 }}
+                >
+                  <Sun size={18} />
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </motion.button>
+
+          {/* Menu button */}
+          <button
+            onClick={() => setOpen(!open)}
+            className="p-2 cursor-pointer rounded-lg rounded-r-4xl border border-zinc-200 dark:border-zinc-700"
+          >
+            {open ? <X size={18} /> : <Menu size={18} />}
+          </button>
+        </div>
+      </div>
+
+      {/* Animated dropdown */}
+      <AnimatePresence>
+        {open && (
+          <motion.div
+            initial={{ opacity: 0, y: -10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="absolute right-6 mt-2 w-44 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-lg"
+          >
+            {menuItems.map(item => (
+              <a
+                key={item.href}
+                href={item.href}
+                className="block px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                onClick={() => setOpen(false)}
+              >
+                {item.label}
+              </a>
+            ))}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
+  );
+}
