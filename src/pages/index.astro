@@ -1,11 +1,12 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
-import Hero from "../components/Hero.astro";
+import Hero from "../react/Hero";
 import FeaturedBlogs from "../components/FeaturedBlogs.astro";
 import FeaturedProjects from "../components/FeaturedProjects.astro";
 
 import type { Blog } from "../lib/types";
 import type { Project } from "../lib/types";
+import SkillsSection from "../components/SkillsSection.astro";
 
 
 const featuredBlogs:Blog[] = [
@@ -48,7 +49,8 @@ const featuredProjects : Project[] = [
 ---
 
 <BaseLayout title="Aditya Soni - Software Engineer">
-  <Hero />
+  <Hero client:load/>
+  <SkillsSection/>
   <FeaturedProjects projects={featuredProjects} />
   <FeaturedBlogs blogs={featuredBlogs}/>
 </BaseLayout>

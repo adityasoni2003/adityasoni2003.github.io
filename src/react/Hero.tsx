@@ -1,0 +1,186 @@
+import { motion } from "framer-motion";
+import type { Variants } from "framer-motion";
+import { useEffect, useState } from "react";
+
+/* ---------------------------
+   Theme observer hook
+---------------------------- */
+function useThemeKey() {
+  const [themeKey, setThemeKey] = useState("light");
+
+  useEffect(() => {
+    const html = document.documentElement;
+
+    const update = () => {
+      setThemeKey(html.classList.contains("dark") ? "dark" : "light");
+    };
+
+    update();
+
+    const observer = new MutationObserver(update);
+    observer.observe(html, { attributes: true, attributeFilter: ["class"] });
+
+    return () => observer.disconnect();
+  }, []);
+
+  return themeKey;
+}
+
+/* ---------------------------
+   Dust animation variants
+---------------------------- */
+const container = {
+  hidden: {},
+  show: {
+    transition: {
+      staggerChildren: 0.04,
+    },
+  },
+};
+
+const dust: Variants = {
+  hidden: (i: number) => ({
+    opacity: 0,
+    y: 16,
+    x: i,
+    filter: "blur(6px)",
+  }),
+  show: {
+    opacity: 1,
+    x: 0,
+    y: 0,
+    filter: "blur(0px)",
+    transition: {
+      duration: 0.45,
+      ease: "easeOut",
+    },
+  },
+};
+
+
+/* ---------------------------
+   Dust text component
+---------------------------- */
+function DustText({
+  text,
+  themeKey,
+}: {
+  text: string;
+  themeKey: string;
+}) {
+  return (
+    <motion.span
+      key={`${text}-${themeKey}`}
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="inline-block"
+    >
+      {text.split("").map((char, i) => (
+        <motion.span key={i} variants={dust} className="inline-block">
+          {char === " " ? "\u00A0" : char}
+        </motion.span>
+      ))}
+    </motion.span>
+  );
+}
+
+/* ---------------------------
+   Hero Component
+---------------------------- */
+export default function HeroDust() {
+  const themeKey = useThemeKey();
+
+  return (
+    <section className="relative w-full min-h-screen py-20 px-4 md:py-28">
+      <div className="flex flex-col">
+
+        {/* OPEN TO WORK */}
+        <motion.div
+          key={`badge-${themeKey}`}
+          initial={{ opacity: 0, y: -8 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.3 }}
+          className="mb-6 flex items-center gap-1 max-w-fit p-1 px-2 rounded-full
+                     bg-white dark:bg-zinc-900
+                     shadow dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+        >
+          <span className="relative flex h-1.5 w-1.5">
+            <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
+            <span className="relative inline-flex h-1.5 w-1.5 rounded-full bg-green-500"></span>
+          </span>
+          <span className="text-[10px] font-medium tracking-wide">
+            Open to Work
+          </span>
+        </motion.div>
+
+        {/* SOFTWARE */}
+        <h1 className="text-[clamp(3.5rem,8vw,7rem)] font-extrabold text-nowrap tracking-tight leading-none">
+          <DustText text="Software" themeKey={themeKey} />
+        </h1>
+
+        {/* MOBILE ENGINEER */}
+        <h2 className="text-[clamp(3.5rem,8vw,7rem)] text-nowrap block lg:hidden font-bold tracking-tight">
+          <DustText text="Engineer" themeKey={themeKey} />
+        </h2>
+
+        {/* DESCRIPTION + DESKTOP ENGINEER */}
+        <div className="flex flex-col md:flex-row items-start">
+            <HeroDescription/>
+
+
+          <h2 className="text-[clamp(3.5rem,8vw,7rem)] hidden lg:block font-bold text-nowrap tracking-tight">
+            <DustText text="Engineer" themeKey={themeKey} />
+          </h2>
+
+        </div>
+      </div>
+    </section>
+  );
+}
+
+const containerDescription: Variants = {
+  hidden: {},
+  show: {
+    transition: { staggerChildren: 0.05 }, // stagger words
+  },
+};
+
+const wordVariants: Variants = {
+  hidden: { opacity: 0, y: -20 }, // start 20px above
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: { duration: 0.4, ease: "easeOut" },
+  },
+};
+
+function HeroDescription() {
+  const text = [
+    "Developer,", 
+    "user focused,", 
+    "backend capable,", 
+    "cloud ready,", 
+    "problem solver."
+  ];
+
+
+  return (
+    <motion.p
+      variants={container}
+      initial="hidden"
+      animate="show"
+      className="max-w-[90%] lg:pl-4 lg:mt-5 lg:max-w-[50%] text-lg md:text-xl leading-relaxed"
+    >
+      {text.map((word, i) => (
+        <motion.span
+          key={i}
+          variants={wordVariants}
+          className={`inline-block mr-1 }`}
+        >
+          {word}
+        </motion.span>
+      ))}
+    </motion.p>
+  );
+}

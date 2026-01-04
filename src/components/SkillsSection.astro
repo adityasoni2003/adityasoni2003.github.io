@@ -1,0 +1,98 @@
+---
+import SkillsCards from "../react/SkillCards";
+
+const skills = [
+  {
+    title: "Frontend Development",
+    icon: "🎨",
+    tech: "React.js / Next.js / Astro / TypeScript / JavaScript",
+    description:
+      "Enterprise React apps with Next.js 14 App Router, TypeScript, Server Components, and Mobile Responsived web apps achieving performance improvements",
+    colSpan: "lg:col-span-3",
+  },
+  {
+    title: "Database Systems",
+    icon: "🗄️",
+    tech: "MongoDB / PostgreSQL / Redis / MySQL / Firebase",
+    description:
+      "Optimized database queries, implemented caching strategies, and managed large-scale data operations for high-traffic applications",
+    colSpan: "lg:col-span-1",
+  },
+  {
+    title: "AI & Modern Tools",
+    icon: "🤖",
+    tech: "Generative AI / Tool-calling Agents",
+    description:
+      "Built AI-powered products with tool-calling agents, implemented cost optimization ",
+    colSpan: "lg:col-span-1",
+  },
+  {
+    title: "Backend Architecture",
+    icon: "⚙️",
+    tech: "Node.js / Express.js / RESTful APIs / Mongoose / Service Layer",
+    description:
+      "Built many optimized APIs with Node.js, Express, and robust service layer architecture supporting millions of users with impressive uptime",
+    colSpan: "lg:col-span-3",
+  },
+  {
+    title: "State Management",
+    icon: "🔄",
+    tech: "Redux / TanStack Query / React Hook Form / Zod",
+    description:
+      "Advanced state management with Redux, server state with TanStack Query, and robust form handling reducing bugs by 80%",
+    colSpan: "lg:col-span-1",
+  },
+  {
+    title: "Performance & Optimization",
+    icon: "⚡",
+    tech: "Code Splitting / Bundle Analysis / Caching / Progressive Loading",
+    description:
+      "Implemented progressive image loading, browser-level caching, and performance optimizations achieving 150% improvement in load times",
+    colSpan: "lg:col-span-1",
+  },
+  {
+    title: "UI/UX & Styling",
+    icon: "🎭",
+    tech: "Tailwind CSS / ANT D / SCSS / Styled Components",
+    description:
+      "Built custom ANT-D components, responsive design systems, and modern UI libraries with consistent design tokens",
+    colSpan: "lg:col-span-2",
+  },
+  {
+    title: "DevOps & Infrastructure",
+    icon: "🚀",
+    tech: "Docker / Linux / CI/CD",
+    description:
+      "Zero-downtime deployments, container orchestration, and automated CI/CD pipelines with monitoring",
+    colSpan: "lg:col-span-3",
+  },
+  {
+    title: "Real-time Systems",
+    icon: "🔗",
+    tech: "Socket.io / WebRTC / Websockets",
+    description:
+      "Real-time chat systems, WebSocket implementations, FCM notifications, and seamless video conferencing integrations",
+    colSpan: "lg:col-span-1",
+  },
+];
+
+---
+
+
+<section class="space-y-8">
+    <div class="space-y-4 text-center" style={{ opacity: 1 }}>
+    <h1 class="text-2xl sm:text-3xl font-bold ">
+        My Skills <span class=" ">Arena</span>
+    </h1>
+    <p class="text-lg max-w-2xl mx-auto">
+        Technologies and tools I use to build{" "}
+        <span class="font-semibold ">
+        scalable applications
+        </span>
+    </p>
+    <div class="h-px bg-gradient-to-r from-transparent  to-transparent  max-w-xs mx-auto transition-all duration-500"></div>
+    </div>
+    <SkillsCards skills={skills} client:load/>
+
+</section>
+  
