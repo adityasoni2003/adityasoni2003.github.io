@@ -20,11 +20,7 @@
     -webkit-font-smoothing: antialiased;
   }
 
-  /* DARK MODE */
-  .dark body {
-    background-color: rgb(9 9 11); /* zinc-950 */
-    color: rgb(244 244 245); /* zinc-100 */
-  }
+
 
   /* Headings */
   h1, h2, h3, h4, h5, h6 {
@@ -32,11 +28,7 @@
   }
 
   .dark h1,
-  .dark h2,
-  .dark h3,
-  .dark h4,
-  .dark h5,
-  .dark h6 {
+  .dark h2 {
     color: rgb(244 244 245);
   }
 
@@ -48,6 +40,16 @@
   .dark p {
     color: rgb(161 161 170); /* zinc-400 */
   }
+
+  .no-scrollbar {
+  scrollbar-width: none;        /* Firefox */
+  -ms-overflow-style: none;     /* IE/Edge */
+  }
+
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;                /* Chrome/Safari */
+  }
+
 }
 
 /* -------------------------
