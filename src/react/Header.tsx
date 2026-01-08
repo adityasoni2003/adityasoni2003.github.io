@@ -31,7 +31,7 @@ export default function HeaderClient() {
 
 
   return (
-    <header className="sticky top-0 z-50 backdrop-blur bg-white rounded-4xl shadow">
+    <header className="sticky top-10 z-50 backdrop-blur bg-white rounded-4xl shadow">
       <div className="container flex h-16 items-center justify-between">
 
         {/* Name */}

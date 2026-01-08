@@ -16,4 +16,9 @@ export type Project = {
   date: string;  // dd/mm/yyyy
 };
 
-
+export interface FeaturedBlogsProps {
+  blogs: Blog[];
+}
+export interface FeaturedProjectsProps {
+  projects: Project[];
+}

@@ -1,18 +1,19 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
-import ProjectCard from "../components/ui/ProjectCard.astro";
+import ProjectCards from "../react/ProjectCard";
 import { getProjects } from "../lib/data";
 
 const projects = await getProjects();
+console.log("here",projects)
 ---
 
 <BaseLayout title="Projects">
-  <main class="container py-20">
+  <main class="container py-20 max-w-360">
     <h1 class="text-4xl font-bold mb-10">Projects</h1>
 
     <div class="grid gap-6 md:grid-cols-2">
-      {projects.map(project => (
-        <ProjectCard project={project} />
+      {projects?.map((project,ind) => (
+        <ProjectCards project={project} index={ind} client:load />
       ))}
     </div>
   </main>
