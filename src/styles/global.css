@@ -81,7 +81,20 @@
   .dark .card:hover {
     box-shadow: 0 10px 25px rgba(255, 240, 240, 0.35);
   }
-/* Light mode */
+  .skill-card:hover {
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+  }
+
+  .dark .skill-card:hover {
+    box-shadow: 0 10px 25px rgba(255, 240, 240, 0.35);
+  }
+  .dark .skill-glow:hover {
+    box-shadow:
+      0 0 0 1px rgba(255,255,255,0.06),
+      0 0 14px rgba(200,200,200,0.35);
+  }
+
+  /* Light mode */
 .cta {
   display: inline-flex;
   align-items: center;

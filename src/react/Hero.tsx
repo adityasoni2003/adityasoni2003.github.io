@@ -92,8 +92,8 @@ export default function HeroDust() {
   const themeKey = useThemeKey();
 
   return (
-    <section className="relative w-full min-h-screen py-20 px-4 md:py-28">
-      <div className="flex flex-col">
+    <section className="relative w-full min-h-70 xl:min-h-100 max-w-360 pb-10 pt-15 px-4 mx-auto md:py-18">
+      <div className="flex flex-col max-w-236 mx-auto">
 
         {/* OPEN TO WORK */}
         <motion.div
@@ -139,12 +139,6 @@ export default function HeroDust() {
   );
 }
 
-const containerDescription: Variants = {
-  hidden: {},
-  show: {
-    transition: { staggerChildren: 0.05 }, // stagger words
-  },
-};
 
 const wordVariants: Variants = {
   hidden: { opacity: 0, y: -20 }, // start 20px above

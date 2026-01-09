@@ -100,7 +100,7 @@ export default function SkillsCards({ skills }: SkillsCardsProps) {
             whileHover={{ scale: 1.03 }}
             className={`group ${skill.colSpan}
               cursor-pointer bg-white border border-gray-200 rounded-2xl
-              p-4 lg:p-6 flex flex-col min-h-30
+              p-4 lg:p-6 flex flex-col min-h-30 skill-card
             `}
             onClick={() => setActiveIndex(idx)}
             onHoverStart={() => setActiveIndex(isActive ? null : idx)}

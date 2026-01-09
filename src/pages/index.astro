@@ -7,7 +7,7 @@ import FeaturedProjects from "../components/FeaturedProjects.astro";
 import type { Blog } from "../lib/types";
 import type { Project } from "../lib/types";
 import SkillsSection from "../components/SkillsSection.astro";
-
+import SkillsBanner from "../react/SkillsBanner";
 
 const featuredBlogs:Blog[] = [
     {
@@ -73,10 +73,57 @@ const featuredProjects : Project[] = [
       date: "03/08/2024",
     },
   ];
+export const skills: string[] = [
+  "React.js",
+  "Next.js",
+  "Astro",
+  "TypeScript",
+  "JavaScript",
+
+  "MongoDB",
+  "PostgreSQL",
+  "Redis",
+  "MySQL",
+  "Firebase",
+
+  "Generative AI",
+  "Tool-calling Agents",
+
+  "Node.js",
+  "Express.js",
+  "RESTful APIs",
+  "Mongoose",
+  "Service Layer Architecture",
+
+  "Redux",
+  "TanStack Query",
+  "React Hook Form",
+  "Zod",
+
+  "Code Splitting",
+  "Bundle Analysis",
+  "Caching",
+  "Progressive Loading",
+
+  "Tailwind CSS",
+  "ANT Design",
+  "SCSS",
+  "Styled Components",
+
+  "Docker",
+  "Linux",
+  "CI/CD",
+
+  "Socket.io",
+  "WebRTC",
+  "WebSockets",
+];
+
 ---
 
 <BaseLayout title="Aditya Soni - Software Engineer">
   <Hero client:load/>
+  <SkillsBanner skills={skills} client:load/>
   <SkillsSection/>
   <FeaturedProjects projects={featuredProjects} />
   <FeaturedBlogs blogs={featuredBlogs}/>

@@ -31,8 +31,8 @@ export default function HeaderClient() {
 
 
   return (
-    <header className="sticky top-10 z-50 backdrop-blur bg-white rounded-4xl shadow">
-      <div className="container flex h-16 items-center justify-between">
+    <header className="px-4 sticky top-10 z-50">
+      <div className="max-w-236 relative mx-auto  backdrop-blur bg-white rounded-4xl shadow container flex h-16 items-center justify-between">
 
         {/* Name */}
         <a
@@ -83,16 +83,14 @@ export default function HeaderClient() {
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
         </div>
-      </div>
-
       {/* Animated dropdown */}
       <AnimatePresence>
         {open && (
-          <motion.div
+          <motion.nav
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute right-6 mt-2 w-44 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-lg"
+            className="absolute right-6 top-15 mt-2 w-44 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-lg"
           >
             {menuItems.map(item => (
               <a
@@ -104,9 +102,11 @@ export default function HeaderClient() {
                 {item.label}
               </a>
             ))}
-          </motion.div>
+          </motion.nav>
         )}
       </AnimatePresence>
+      </div>
+
     </header>
   );
 }
