@@ -10,15 +10,45 @@ const menuItems = [
 
 export default function AutoExpandingMenu() {
   const [expanded, setExpanded] = useState(false);
+  const [isHidden , setIsHidden] = useState(false);
+
+
+  const scrollToContact = () => {
+    const el = document.getElementById("contact-me");
+    if (!el) return;
+
+    el.scrollIntoView({
+      behavior: "smooth",
+      block: "start",
+    });
+  };
 
   // Expand automatically on load
   useEffect(() => {
     const timer = setTimeout(() => setExpanded(true), 500);
     return () => clearTimeout(timer);
+  }, [expanded]);
+   // 🔥 Hide when #contact-me is in view
+  useEffect(() => {
+    const target = document.getElementById("contact-me");
+    if (!target) return;
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHidden(entry.isIntersecting);
+        setExpanded(entry.isIntersecting)
+      },
+      {
+        threshold: 0.25, // hides slightly before full overlap
+      }
+    );
+
+    observer.observe(target);
+    return () => observer.disconnect();
   }, []);
 
   return (
-    <div className="fixed bottom-30  left-1/2 -translate-x-1/2 z-50 flex flex-col items-center">
+    <div className={`${isHidden ? "hidden" : ""} fixed bottom-30  left-1/2 -translate-x-1/2 z-50 flex flex-col items-center`}>
       {/* Ball / initial placeholder */}
       {!expanded && (
         <motion.div
@@ -27,7 +57,7 @@ export default function AutoExpandingMenu() {
           transition={{ duration: 0.6, type: "spring", stiffness: 300 }}
           className="w-14 h-14 rounded-full bg-zinc-900 dark:bg-zinc-100 shadow-lg flex items-center justify-center"
         >
-          <span className="text-white dark:text-zinc-900 font-bold">AS</span>
+          <span className="text-white sparkle dark:text-zinc-900 font-bold">AS</span>
         </motion.div>
       )}
 
@@ -59,7 +89,11 @@ export default function AutoExpandingMenu() {
 
           {/* Text */}
           <motion.a
-            href="#contact"
+            onClick={(e)=>{
+              e.preventDefault();
+              scrollToContact();
+            }}
+            href="#contact-me"
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}

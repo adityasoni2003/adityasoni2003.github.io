@@ -1,0 +1,107 @@
+---
+const words = ["build", "create", "design", "make"];
+---
+
+<footer id="contact-me" class="relative overflow-hidden bg-black text-white">
+  <div
+    class="
+      mx-auto w-full max-w-6xl
+      px-6 pt-12 pb-24
+      flex flex-col gap-12
+      md:px-10 md:pt-16 md:gap-16
+    "
+  >
+    <!-- TOP CONTENT -->
+    <div class="flex flex-col gap-8 md:gap-12">
+      <!-- Heading -->
+      <h2
+        class="
+          text-4xl md:text-5xl lg:text-6xl
+          tracking-tight leading-tight text-white
+        "
+      >
+        Let's
+        <span class="word-container">
+        {words.map((word, i) => (
+            <span class="word" style={`--i:${i}`}>
+            {word}
+            </span>
+        ))}
+        </span>
+
+        <br />
+        <span class="text-zinc-500">
+          incredible work together.
+        </span>
+      </h2>
+
+      <!-- CONTACT ROW -->
+      <ul
+        class="
+          flex flex-col gap-6
+          border-b border-zinc-700 pb-6
+          md:flex-row md:items-center md:justify-between
+        "
+      >
+        <!-- Email -->
+        <li class="flex flex-col gap-1">
+          <span class="text-zinc-500 text-sm">Email</span>
+          <a
+            href="mailto:adityasoni.codes@gmail.com"
+            class="w-fit text-sm hover:text-zinc-300 transition"
+          >
+            adityasoni.codes@gmail.com
+          </a>
+        </li>
+
+        <!-- Socials -->
+        <li class="flex flex-col gap-2">
+          <span class="text-zinc-500 text-sm">Socials</span>
+          <div class="flex gap-3">
+            <a href="https://linkedin.com" target="_blank" class="footer-icon">LinkedIn</a>
+            <a href="https://github.com" target="_blank" class="footer-icon">GitHub</a>
+            <a href="https://x.com" target="_blank" class="footer-icon">X</a>
+          </div>
+        </li>
+      </ul>
+
+      <!-- QUICK LINKS -->
+      <div class="flex gap-4 text-sm">
+        <a href="/" class="footer-link">Home</a>
+        <a href="/projects" class="footer-link">Projects</a>
+        <a href="/blogs" class="footer-link">Blogs</a>
+        <a href="/about" class="footer-link">About</a>
+      </div>
+    </div>
+
+    <!-- BOTTOM BAR -->
+    <div
+      class="
+        flex flex-col-reverse gap-2 text-xs
+        md:flex-row md:items-center md:justify-between
+      "
+    >
+      <div class="flex items-center gap-4 flex-wrap">
+        <span class="text-zinc-400">Based in</span>
+        <span>Rajasthan, India</span>
+      </div>
+
+      <span class="text-zinc-400">
+        © 2026 Aditya Soni
+      </span>
+    </div>
+
+    <!-- BIG BRAND TEXT -->
+    <h2
+      class="
+        absolute -bottom-30 left-0 w-full
+        text-center font-medium whitespace-nowrap
+        text-white/10
+        text-[120px] md:text-[180px] lg:text-[240px]
+        pointer-events-none
+      "
+    >
+      Aditya
+    </h2>
+  </div>
+</footer>

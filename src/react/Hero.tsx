@@ -115,12 +115,12 @@ export default function HeroDust() {
         </motion.div>
 
         {/* SOFTWARE */}
-        <h1 className="text-[clamp(3.5rem,8vw,7rem)] font-extrabold text-nowrap tracking-tight leading-none">
+        <h1 className="text-[clamp(3.5rem,8vw,7rem)] heading font-extrabold text-nowrap tracking-tight leading-none">
           <DustText text="Software" themeKey={themeKey} />
         </h1>
 
         {/* MOBILE ENGINEER */}
-        <h2 className="text-[clamp(3.5rem,8vw,7rem)] text-nowrap block lg:hidden font-bold tracking-tight">
+        <h2 className="text-[clamp(3.5rem,8vw,7rem)] heading text-nowrap block lg:hidden font-bold tracking-tight">
           <DustText text="Engineer" themeKey={themeKey} />
         </h2>
 
@@ -129,7 +129,7 @@ export default function HeroDust() {
             <HeroDescription/>
 
 
-          <h2 className="text-[clamp(3.5rem,8vw,7rem)] hidden lg:block font-bold text-nowrap tracking-tight">
+          <h2 className="text-[clamp(3.5rem,8vw,7rem)] heading hidden lg:block font-bold text-nowrap tracking-tight">
             <DustText text="Engineer" themeKey={themeKey} />
           </h2>
 

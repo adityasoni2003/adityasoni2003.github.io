@@ -4,9 +4,6 @@ import { useEffect, useMemo, useState } from "react";
 
 
 export default function SkillsBanner({ skills }: SkillsBannerProps) {
-  const controls = useAnimation();
-  const [isHovered, setIsHovered] = useState(false);
-
   /* duplicate list for seamless loop */
   const items = [...skills, ...skills];
 
@@ -35,8 +32,6 @@ export default function SkillsBanner({ skills }: SkillsBannerProps) {
             repeat: Infinity,
         }}
         whileHover={{ animationPlayState: "paused" }}
-        onMouseEnter={() => setIsHovered(true)}
-        onMouseLeave={() => setIsHovered(false)}
       >
         {items.map((skill, i) => {
           const glow = glowMap[i % skills.length];

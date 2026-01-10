@@ -31,14 +31,20 @@ export default function HeaderClient() {
 
 
   return (
-    <header className="px-4 sticky top-10 z-50">
+    <header
+        className="
+          px-4 sticky top-0 z-50
+          backdrop-blur-xl
+          pt-5 pb-2
+        "
+      >
+
       <div className="max-w-236 relative mx-auto  backdrop-blur bg-white rounded-4xl shadow container flex h-16 items-center justify-between">
 
         {/* Name */}
         <a
           href="/"
-          className="text-xl font-bold tracking-tight"
-          style={{ fontFamily: "Space Grotesk, sans-serif" }}
+          className="text-xl font-bold tracking-tight code-subheading"
         >
           Aditya Soni
         </a>
