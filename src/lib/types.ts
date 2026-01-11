@@ -16,6 +16,12 @@ export type Project = {
   date: string;  // dd/mm/yyyy
 };
 
+export type AboutImage = {
+  src: string;
+  type: "landscape" | "square" | "portrait";
+  alt?: string;
+};
+
 export interface SkillsBannerProps {
   skills: string[];
 }
@@ -24,4 +30,7 @@ export interface FeaturedBlogsProps {
 }
 export interface FeaturedProjectsProps {
   projects: Project[];
+}
+export interface ImageCarouselProps {
+  images: AboutImage[];
 }

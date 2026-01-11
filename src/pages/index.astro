@@ -127,6 +127,6 @@ export const skills: string[] = [
   <Hero client:load/>
   <SkillsBanner skills={skills} client:load/>
   <SkillsSection/>
-  <FeaturedProjects projects={featuredProjects} />
-  <FeaturedBlogs blogs={featuredBlogs}/>
+  <FeaturedProjects projects={featuredProjects.slice(0,2)} />
+  <FeaturedBlogs blogs={featuredBlogs.slice(0,2)}/>
 </BaseLayout>

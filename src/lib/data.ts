@@ -1,4 +1,4 @@
-import type { Blog, Project } from "./types";
+import type { Blog, Project, AboutImage } from "./types";
 
 /* ------------------------
    BLOGS
@@ -71,6 +71,46 @@ export async function getProjects(): Promise<Project[]> {
       thumbnail:
         "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
       date: "03/08/2024",
+    },
+  ];
+}
+
+export async function getAboutImages(): Promise<AboutImage[]> {
+  return [
+    // LANDSCAPE
+    {
+      src: "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+      type: "landscape",
+      alt: "Workspace setup",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1498050108023-c5249f4df085",
+      type: "landscape",
+      alt: "Coding environment",
+    },
+
+    // SQUARE
+    {
+      src: "https://images.unsplash.com/photo-1506794778202-cad84cf45f1d",
+      type: "square",
+      alt: "Profile portrait",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1535713875002-d1d0cf377fde",
+      type: "square",
+      alt: "Casual photo",
+    },
+
+    // PORTRAIT
+    {
+      src: "https://images.unsplash.com/photo-1527980965255-d3b416303d12",
+      type: "portrait",
+      alt: "Standing portrait",
+    },
+    {
+      src: "https://images.unsplash.com/photo-1544005313-94ddf0286df2",
+      type: "portrait",
+      alt: "Outdoor portrait",
     },
   ];
 }

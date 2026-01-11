@@ -1,12 +1,73 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
+import ImageCarousel from "../components/ImageCarousel.astro";
+import { getAboutImages } from "../lib/data";
+
+const images = await getAboutImages();
+
 ---
 
-<BaseLayout title="About Me">
-  <main class="container py-20 prose">
-    <h1>About Me</h1>
-    <p>
-      I'm a software engineer working with MERN, Go, and cloud systems.
-    </p>
+
+<BaseLayout title="About Aditya Soni">
+  <main class="mx-auto max-w-236 px-6 pt-16 pb-24 space-y-24">
+
+    <!-- HERO / INTRO -->
+    <section class="grid gap-8 md:grid-cols-2 md:items-center">
+      <div class="space-y-6">
+        <h1 class="text-4xl heading md:text-5xl font-semibold tracking-tight">
+          About <span class="text-zinc-500">Me</span>
+        </h1>
+
+        <p class="text-lg text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          I’m a software engineer focused on building scalable products,
+          developer tools, and performant web systems.
+        </p>
+
+        <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+          My work spans across the MERN stack, Go, cloud infrastructure,
+          and modern frontend frameworks. I enjoy turning complex
+          problems into clean, efficient solutions.
+        </p>
+      </div>
+
+      <!-- SIDE HIGHLIGHTS -->
+      <div class="rounded-2xl border border-zinc-200 dark:border-zinc-800 p-6 bg-zinc-50 dark:bg-zinc-900">
+        <ul class="space-y-4 text-sm">
+          <li><strong>Tech:</strong> MERN, Go, AWS, Docker</li>
+          <li><strong>Focus:</strong> Performance, DX, scalability</li>
+          <li><strong>Interests:</strong> Systems, tooling, UI motion</li>
+          <li><strong>Based in:</strong> Rajasthan, India</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- IMAGE CAROUSEL -->
+    <section class="space-y-6">
+      <h2 class="text-2xl md:text-3xl heading font-medium tracking-tight">
+        A glimpse of my journey
+      </h2>
+
+      <ImageCarousel
+        client:load
+        images={images}
+      />
+    </section>
+
+    <!-- LONG FORM CONTENT (YOU CAN DUMP CONTENT HERE) -->
+    <section class="max-w-3xl space-y-6">
+      <h2 class="text-2xl heading font-medium">More about me</h2>
+
+      <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        Add any long-form content here. This section is intentionally
+        narrow for better readability and works great for storytelling,
+        philosophy, experience, or career journey.
+      </p>
+
+      <p class="text-zinc-600 dark:text-zinc-400 leading-relaxed">
+        You can paste raw markdown-like text, blogs, or structured
+        content here without breaking the layout.
+      </p>
+    </section>
+
   </main>
 </BaseLayout>

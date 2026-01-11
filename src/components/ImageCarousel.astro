@@ -1,0 +1,50 @@
+---
+import type { ImageCarouselProps } from "../lib/types";
+
+const { images } = Astro.props as ImageCarouselProps;
+
+// Split by type
+const portraits = images.filter(i => i.type === "portrait");
+const landscapes = images.filter(i => i.type === "landscape");
+const squares = images.filter(i => i.type === "square");
+
+// Build a single ordered list
+const orderedImages = [];
+
+// Start strong
+if (portraits[0]) orderedImages.push(portraits.shift());
+if (landscapes[0]) orderedImages.push(landscapes.shift());
+
+// Mix the rest
+const rest = [...portraits, ...squares, ...landscapes];
+for (const img of rest) {
+  orderedImages.push(img);
+}
+---
+
+<section
+  class="
+    grid
+    grid-cols-2 md:grid-cols-4
+    auto-rows-[180px]
+    gap-6
+  "
+>
+  {orderedImages.map(img => img && (
+    <figure
+      class={[
+        "overflow-hidden rounded-xl",
+        img.type === "landscape" && "md:col-span-2 row-span-1",
+        img.type === "portrait" && "row-span-2",
+        img.type === "square" && "row-span-1",
+      ].join(" ")}
+    >
+      <img
+        src={img.src}
+        alt={img.alt ?? ""}
+        loading="lazy"
+        class="w-full h-full object-cover transition-transform duration-500 hover:scale-[1.04]"
+      />
+    </figure>
+  ))}
+</section>

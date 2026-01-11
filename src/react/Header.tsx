@@ -6,7 +6,7 @@ const menuItems = [
   { label: "Home", href: "/" },
   { label: "Blogs", href: "/blogs" },
   { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about" },
+  { label: "About", href: "/about-me" },
 ];
 
 export default function HeaderClient() {
