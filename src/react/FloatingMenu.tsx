@@ -3,9 +3,9 @@ import { Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
 
 const menuItems = [
-  { icon: <Github size={20} />, href: "https://github.com/yourusername" },
-  { icon: <Linkedin size={20} />, href: "https://linkedin.com/in/yourusername" },
-  { icon: <Mail size={20} />, href: "mailto:your.email@example.com" },
+  { icon: <Github size={20} />, href: "https://github.com/adityasoni2003" },
+  { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/adityasoniprofessional/" },
+  { icon: <Mail size={20} />, href: "mailto:adityasoniprofessional@gmail.com" },
 ];
 
 export default function AutoExpandingMenu() {
