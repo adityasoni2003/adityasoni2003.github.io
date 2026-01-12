@@ -4,9 +4,9 @@ import { Sun, Moon, Menu, X } from "lucide-react";
 
 const menuItems = [
   { label: "Home", href: "/" },
+  { label: "About Me", href: "/about-me" },
   { label: "Blogs", href: "/blogs" },
   { label: "Projects", href: "/projects" },
-  { label: "About", href: "/about-me" },
 ];
 
 export default function HeaderClient() {
@@ -96,7 +96,7 @@ export default function HeaderClient() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute right-6 top-15 mt-2 w-44 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 shadow-lg"
+            className="absolute right-6  overflow-hidden top-15 mt-2 w-44 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 dark:shadow-amber-50 shadow-lg"
           >
             {menuItems.map(item => (
               <a
