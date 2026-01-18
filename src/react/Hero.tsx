@@ -164,7 +164,7 @@ function HeroDescription() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="max-w-[90%] lg:pl-4 lg:mt-5 lg:max-w-[50%] text-lg md:text-xl leading-relaxed"
+      className="max-w-[90%] text-center py-[0.35rem] px-[0.6rem] xl:text-left lg:pl-4 lg:mt-5 lg:max-w-[50%] text-lg md:text-xl leading-relaxed"
     >
       {text.map((word, i) => (
         <motion.span
