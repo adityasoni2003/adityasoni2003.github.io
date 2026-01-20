@@ -93,7 +93,7 @@ export default function HeroDust() {
 
   return (
     <section className="relative w-full min-h-70 xl:min-h-100 max-w-360 pb-10 pt-15 px-4 mx-auto md:py-18">
-      <div className="flex flex-col max-w-236 mx-auto">
+      <div className="relative flex flex-col max-w-236 mx-auto">
 
         {/* OPEN TO WORK */}
         <motion.div
@@ -125,6 +125,7 @@ export default function HeroDust() {
         </h2>
 
         {/* DESCRIPTION + DESKTOP ENGINEER */}
+
         <div className="flex flex-col md:flex-row items-start">
             <HeroDescription/>
 
@@ -134,6 +135,7 @@ export default function HeroDust() {
           </h2>
 
         </div>
+
       </div>
     </section>
   );
