@@ -66,7 +66,7 @@ export default function HeaderClient() {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: 90, opacity: 0 }}
                 >
-                  <Moon size={18} />
+                  <Moon size={18} className="cursor-pointer"/>
                 </motion.div>
               ) : (
                 <motion.div
@@ -75,7 +75,7 @@ export default function HeaderClient() {
                   animate={{ rotate: 0, opacity: 1 }}
                   exit={{ rotate: -90, opacity: 0 }}
                 >
-                  <Sun size={18} />
+                  <Sun size={18} className="cursor-pointerf"/>
                 </motion.div>
               )}
             </AnimatePresence>

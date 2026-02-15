@@ -153,7 +153,6 @@ const wordVariants: Variants = {
 
 function HeroDescription() {
   const text = [
-    "Developer,", 
     "user focused,", 
     "backend capable,", 
     "cloud ready,", 

@@ -22,7 +22,6 @@ export default function BlogCard({ blog, index = 0 }: BlogCardProps) {
         ease: "easeOut",
         delay: index * 0.03,
       }}
-      whileHover={{ y: -4 }}
       className="
         group
         block
