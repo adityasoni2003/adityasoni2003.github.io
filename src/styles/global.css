@@ -141,7 +141,7 @@
 }
 
 .dark .cta:hover {
-  background-color: rgb(24 24 27); /* zinc-900 */
+  background-color: rgb(119, 119, 229); /* zinc-900 */
   box-shadow:
     0 0 0 1px rgba(255, 255, 255, 0.06),
     0 0 18px rgba(200, 200, 200, 0.35);
@@ -246,6 +246,34 @@
 
   animation: wordSwap 8s infinite;
   animation-delay: calc(var(--i) * 2s);
+}
+.btn {
+
+  height: 60px;
+  cursor: pointer;
+  background: transparent;
+  border: 1px solid #91C9FF;
+  outline: none;
+  transition: 1s ease-in-out;
+}
+.dark .btn {
+  border: 1px solid #91C9FF;
+  color: #91C9FF;
+}
+
+
+.btn:hover {
+  transition: 1s ease-in-out;
+}
+
+.btn:hover svg {
+  stroke-dashoffset: -480;
+}
+
+.btn span {
+  color: white;
+  font-size: 18px;
+  font-weight: 100;
 }
 
 @keyframes wordSwap {

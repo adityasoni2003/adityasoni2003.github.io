@@ -1,9 +1,11 @@
 ---
 import "../styles/global.css";
+import { ViewTransitions } from "astro:transitions";
 import AnimatedBackground from "../react/AnimatedBackground";
 import Header from "./Header.astro";
 import FloatingMenu from "../react/FloatingMenu";
 import Footer from "../components/Footer.astro";
+
 const { title, description } = Astro.props;
 ---
 
@@ -12,6 +14,10 @@ const { title, description } = Astro.props;
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    <!-- ✅ Enable View Transitions -->
+    <ViewTransitions />
+
     <title>{title}</title>
     <meta name="description" content={description} />
   </head>
@@ -33,14 +39,36 @@ const { title, description } = Astro.props;
 
     <!-- Main content -->
     <main class="min-h-screen relative">
-      <!-- Header -->
       <Header />
-
-      <!-- Page slot -->
       <slot />
-      <FloatingMenu client:load/>
+      <FloatingMenu client:load />
     </main>
+
     <Footer />
 
   </body>
+
+  <!-- Scroll script -->
+  <script type="module">
+    const attachScroll = () => {
+      document.querySelectorAll(".contact-cta").forEach((btn) => {
+        btn.onclick = (e) => {
+          e.preventDefault();
+
+          const section = document.getElementById("contact-me");
+
+          if (!section) {
+            window.location.href = "/#contact-me";
+            return;
+          }
+
+          section.scrollIntoView({ behavior: "smooth" });
+          history.replaceState(null, "", window.location.pathname);
+        };
+      });
+    };
+
+    document.addEventListener("astro:page-load", attachScroll);
+  </script>
+
 </html>

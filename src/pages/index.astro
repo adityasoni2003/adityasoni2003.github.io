@@ -8,6 +8,7 @@ import type { Blog } from "../lib/types";
 import type { Project } from "../lib/types";
 import SkillsSection from "../components/SkillsSection.astro";
 import SkillsBanner from "../react/SkillsBanner";
+import AboutMe from "../components/AboutMe.astro";
 
 const featuredBlogs:Blog[] = [
     {
@@ -125,6 +126,7 @@ export const skills: string[] = [
 
 <BaseLayout title="Aditya Soni - Software Engineer">
   <Hero client:load/>
+  <AboutMe/>
   <SkillsBanner skills={skills} client:load/>
   <SkillsSection/>
   <FeaturedProjects projects={featuredProjects.slice(0,2)} />

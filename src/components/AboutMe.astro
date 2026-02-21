@@ -1,0 +1,86 @@
+---
+import profile from "../assets/profilePic.png";
+
+const experiences = [
+  {
+    role: "Software Engineer",
+    company: "Mordor Intelligence",
+    period: "June 2024 - Present",
+    logo: "https://www.mordorintelligence.com/express-img/optimize-imgs/mordor_mobile_logo.webp",
+  },
+  {
+    role: "Software Engineer Intern",
+    company: "Mordor Intelligence",
+    period: "June 2023 - May 2024",
+    logo: "https://www.mordorintelligence.com/express-img/optimize-imgs/mordor_mobile_logo.webp",
+  },
+];
+---
+
+<section class="py-10 px-4 max-w-236 mx-auto">
+  <div class="max-w-5xl mx-auto">
+
+    <!-- About Section -->
+    <div class="flex flex-col md:flex-row items-center md:items-start gap-10">
+
+      <!-- Image -->
+      <div class="w-48 h-48 md:w-60 md:h-60 flex-shrink-0">
+        <img
+          src={profile.src}
+          alt="Profile photo"
+          class="w-full h-full object-cover rounded-2xl shadow-lg"
+        />
+      </div>
+
+      <!-- Text -->
+      <div class="text-center md:text-left">
+        <h2 class="text-3xl md:text-4xl font-bold mb-4 heading">
+          About Me
+        </h2>
+        <p class="text-lg  leading-relatext-lg md:text-xl leading-relaxed para-text">
+          Hi, I'm Aditya, a passionate web developer focused on building
+          clean, performant, and scalable web applications. I enjoy solving
+          complex problems, learning new technologies, and turning ideas
+          into real-world products.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- Experience Section -->
+<div class="mt-10">
+  <h2 class="text-3xl md:text-4xl font-bold heading ">
+    Experience
+  </h2>
+
+  <div class="ml-4">
+    {experiences.map((exp) => (
+      <div class="flex items-start md:items-center flex-col  md:flex-row justify-between border-b border-gray-800 py-4">
+        <div class="flex items-center gap-4">
+          <img
+            src={exp.logo}
+            alt={exp.company}
+            class="w-10 h-10 object-contain rounded-md"
+          />
+
+          <div>
+            <p class="font-medium">
+              {exp.role}
+            </p>
+            <p class="text-sm text-gray-400">
+              {exp.company}
+            </p>
+          </div>
+        </div>
+
+        <span class="text-sm text-gray-500 whitespace-nowrap">
+          {exp.period}
+        </span>
+
+      </div>
+    ))}
+  </div>
+</div>
+
+  </div>
+</section>

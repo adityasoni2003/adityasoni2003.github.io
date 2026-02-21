@@ -97,7 +97,7 @@ export default function AutoExpandingMenu() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="text-sm font-medium text-zinc-900 dark:text-zinc-100"
+            className="contact-cta text-sm font-medium text-zinc-900 dark:text-zinc-100"
           >
             Let's Connect &rarr;
           </motion.a>
