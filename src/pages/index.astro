@@ -9,39 +9,28 @@ import type { Project } from "../lib/types";
 import SkillsSection from "../components/SkillsSection.astro";
 import SkillsBanner from "../react/SkillsBanner";
 import AboutMe from "../components/AboutMe.astro";
+import { sanity } from "../lib/sanity";
+import imageUrlBuilder from "@sanity/image-url";
 
-const featuredBlogs:Blog[] = [
-    {
-      title: "Understanding XOR in Data Structures",
-      description:
-        "A deep dive into XOR operations, common patterns, and how they are used in DSA problems.",
-      url: "https://medium.com/@adityasoni/understanding-xor-in-dsa",
-      thumbnail:
-        "https://images.unsplash.com/photo-1555066931-4365d14bab8c",
-      topic: "Data Structures",
-      date: "05/01/2025",
-    },
-    {
-      title: "Building a Survey Platform Using MERN",
-      description:
-        "How I designed and implemented a scalable survey platform using MongoDB, Express, React, and Node.js.",
-      url: "https://medium.com/@adityasoni/building-survey-platform-mern",
-      thumbnail:
-        "https://images.unsplash.com/photo-1522075469751-3a6694fb2f61",
-      topic: "System Design",
-      date: "18/11/2024",
-    },
-    {
-      title: "Static Site Generation vs SSR Explained",
-      description:
-        "A practical comparison between SSG and SSR with real-world examples and performance trade-offs.",
-      url: "https://medium.com/@adityasoni/ssg-vs-ssr",
-      thumbnail:
-        "https://images.unsplash.com/photo-1517694712202-14dd9538aa97",
-      topic: "Web Performance",
-      date: "02/09/2024",
-    },
-  ];
+const builder = imageUrlBuilder(sanity);
+const urlFor = (source: any) => builder.image(source).url();
+
+const blogs = await sanity.fetch(`
+  *[_type == "blog" && featured == true]
+  | order(date desc) {
+    title,
+    description,
+    url,
+    topic,
+    date,
+    thumbnail
+  }
+`);
+
+const featuredBlogs = blogs.map((blog: Blog) => ({
+  ...blog,
+  thumbnail: blog.thumbnail ? urlFor(blog.thumbnail) : ""
+}));
 
 const featuredProjects : Project[] = [
     {
@@ -129,6 +118,6 @@ export const skills: string[] = [
   <AboutMe/>
   <SkillsBanner skills={skills} client:load/>
   <SkillsSection/>
-  <FeaturedProjects projects={featuredProjects.slice(0,2)} />
-  <FeaturedBlogs blogs={featuredBlogs.slice(0,2)}/>
+  <FeaturedProjects projects={featuredProjects} />
+  <FeaturedBlogs blogs={featuredBlogs}/>
 </BaseLayout>

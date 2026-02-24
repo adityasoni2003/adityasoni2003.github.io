@@ -4,16 +4,16 @@ export type Blog = {
   url: string;
   thumbnail: string;
   topic: string;
-  date: string; // dd/mm/yyyy
+  date: string;
 };
 
 export type Project = {
   title: string;
   description: string;
   liveUrl: string;
-  githubUrl?: string;   // optional
+  githubUrl?: string; 
   thumbnail: string;
-  date: string;  // dd/mm/yyyy
+  date: string;  
 };
 
 export type AboutImage = {

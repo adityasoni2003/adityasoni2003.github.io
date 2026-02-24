@@ -9,6 +9,17 @@ interface BlogCardProps {
 }
 
 export default function BlogCard({ blog, index = 0 }: BlogCardProps) {
+
+
+  const formattedDate = blog.date
+    ? new Date(blog.date).toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+    : "";
+
+  
   return (
     <motion.a
       href={blog.url}
@@ -62,7 +73,7 @@ export default function BlogCard({ blog, index = 0 }: BlogCardProps) {
 
       {/* FOOTER */}
       <div className="mt-6 text-xs text-zinc-400">
-        {blog.date}
+        {formattedDate}
       </div>
     </motion.a>
   );

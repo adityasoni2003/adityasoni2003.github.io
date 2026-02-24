@@ -1,9 +1,29 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
 import BlogCard from "../react/BlogCardFeatured";
-import { getBlogs } from "../lib/data";
+import { sanity } from "../lib/sanity";
+import imageUrlBuilder from "@sanity/image-url";
+import type { Blog } from "../lib/types";
 
-const blogs = await getBlogs();
+const builder = imageUrlBuilder(sanity);
+const urlFor = (source: any) => builder.image(source).url();
+
+const blogsData = await sanity.fetch(`
+  *[_type == "blog"]
+  | order(date desc) {
+    title,
+    description,
+    url,
+    topic,
+    date,
+    thumbnail
+  }
+`);
+
+const blogs : Array<Blog> = blogsData.map((blog: Blog) => ({
+  ...blog,
+  thumbnail: blog.thumbnail ? urlFor(blog.thumbnail) : ""
+}));
 ---
 
 <BaseLayout title="Blogs">
