@@ -39,15 +39,15 @@ export default function BlogCard({ blog, index = 0 }: BlogCardProps) {
         card
         p-6 md:p-8
         rounded-2xl
-        bg-white dark:bg-zinc-900
-        border border-zinc-200 dark:border-zinc-800
+        bg-white 
+        border border-zinc-200 
         transition
       "
     >
       {/* TOP ROW */}
       <div className="flex items-center justify-between">
         <span className="text-xs uppercase font-semibold tracking-wide
-                         text-zinc-500 dark:text-zinc-400">
+                         text-zinc-500 ">
           {blog.topic}
         </span>
 
@@ -55,7 +55,7 @@ export default function BlogCard({ blog, index = 0 }: BlogCardProps) {
           size={14}
           className="text-zinc-400 transition
                      group-hover:text-zinc-600
-                     dark:group-hover:text-zinc-300"
+                     "
         />
       </div>
 
@@ -66,7 +66,7 @@ export default function BlogCard({ blog, index = 0 }: BlogCardProps) {
 
       {/* DESCRIPTION */}
       <p className="mt-3 text-sm leading-relaxed
-                    text-zinc-600 dark:text-zinc-400
+                    text-zinc-600 
                     max-w-[65ch]">
         {blog.description}
       </p>

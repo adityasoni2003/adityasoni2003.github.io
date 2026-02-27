@@ -55,9 +55,9 @@ export default function AutoExpandingMenu() {
           initial={{ scale: 0 }}
           animate={{ scale: 1 }}
           transition={{ duration: 0.6, type: "spring", stiffness: 300 }}
-          className="w-14 h-14 rounded-full bg-zinc-900 dark:bg-zinc-100 shadow-lg flex items-center justify-center"
+          className="w-14 h-14 rounded-full bg-zinc-900  shadow-lg flex items-center justify-center"
         >
-          <span className="text-white sparkle dark:text-zinc-900 font-bold">AS</span>
+          <span className="text-white sparkle  font-bold">AS</span>
         </motion.div>
       )}
 
@@ -67,7 +67,7 @@ export default function AutoExpandingMenu() {
           initial={{ scale: 0, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
           transition={{ type: "spring", stiffness: 300, damping: 25 }}
-          className="flex flex-col items-center bg-zinc-50 dark:bg-zinc-900 rounded-2xl p-4 shadow-lg space-y-4"
+          className="flex flex-col items-center bg-zinc-50  rounded-2xl p-4 shadow-lg space-y-4"
         >
           {/* Icons row */}
           <div className="flex space-x-6">
@@ -80,7 +80,7 @@ export default function AutoExpandingMenu() {
                 initial={{ y: -20, opacity: 0 }}
                 animate={{ y: 0, opacity: 1 }}
                 transition={{ delay: 0.1 * i, type: "spring", stiffness: 300 }}
-                className="text-zinc-900 dark:text-zinc-100"
+                className="text-zinc-900 "
               >
                 {item.icon}
               </motion.a>
@@ -97,7 +97,7 @@ export default function AutoExpandingMenu() {
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.3 }}
-            className="contact-cta text-sm font-medium text-zinc-900 dark:text-zinc-100"
+            className="contact-cta text-sm font-medium text-zinc-900 "
           >
             Let's Connect &rarr;
           </motion.a>

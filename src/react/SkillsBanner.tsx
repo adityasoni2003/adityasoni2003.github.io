@@ -46,9 +46,9 @@ export default function SkillsBanner({ skills }: SkillsBannerProps) {
               transition={{ duration: 0.2 }}
               className="
                 px-5 py-2 rounded-full text-sm font-medium
-                border border-zinc-300 dark:border-zinc-700
-                bg-white dark:bg-zinc-900
-                text-zinc-800 dark:text-zinc-100
+                border border-zinc-300 
+                bg-white 
+                text-zinc-800 
                 whitespace-nowrap cursor-default
               "
             >

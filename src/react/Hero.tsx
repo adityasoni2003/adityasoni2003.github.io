@@ -103,7 +103,7 @@ export default function HeroDust() {
           transition={{ duration: 0.3 }}
           className="mb-6 flex items-center gap-1 max-w-fit p-1 px-2 rounded-full
                      bg-white 
-                     shadow dark:shadow-amber-50 "
+                     shadow  "
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>

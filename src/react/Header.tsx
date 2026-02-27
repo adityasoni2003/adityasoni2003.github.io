@@ -56,7 +56,7 @@ export default function HeaderClient() {
           <motion.button
             whileTap={{ scale: 0.85, rotate: 90 }}
             onClick={toggleTheme}
-            className="p-2  cursor-pointer rounded-lg rounded-l-4xl border border-zinc-200 dark:border-zinc-700"
+            className="p-2  cursor-pointer rounded-lg rounded-l-4xl border border-zinc-200 "
           >
             <AnimatePresence mode="wait">
               {dark ? (
@@ -96,7 +96,7 @@ export default function HeaderClient() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute right-6  overflow-hidden top-15 mt-2 w-44 rounded-xl border border-zinc-200  bg-white dark:bg-zinc-900 dark:shadow-amber-50 shadow-lg"
+            className="absolute right-6  overflow-hidden top-15 mt-2 w-44 rounded-xl border border-zinc-200  bg-white  shadow-lg"
           >
             {menuItems.map(item => (
               <a
