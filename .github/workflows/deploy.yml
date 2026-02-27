@@ -30,10 +30,8 @@ jobs:
       - name: Build Astro site
         run: npm run build
         env:
-          SANITY_PROJECT_ID: ${{ secrets.SANITY_PROJECT_ID }}
-          SANITY_DATASET: ${{ secrets.SANITY_DATASET }}
-          SANITY_API_VERSION: ${{ secrets.SANITY_API_VERSION }}
-          SANITY_TOKEN: ${{ secrets.SANITY_TOKEN }}
+          PUBLIC_SANITY_PROJECT_ID: ${{ secrets.PUBLIC_SANITY_PROJECT_ID }}
+          PUBLIC_SANITY_DATASET: ${{ secrets.PUBLIC_SANITY_DATASET }}
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
