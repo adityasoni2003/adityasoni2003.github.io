@@ -84,7 +84,7 @@ export default function HeaderClient() {
           {/* Menu button */}
           <button
             onClick={() => setOpen(!open)}
-            className="p-2 cursor-pointer rounded-lg rounded-r-4xl border border-zinc-200 dark:border-zinc-700"
+            className="p-2 cursor-pointer rounded-lg rounded-r-4xl border border-zinc-200 "
           >
             {open ? <X size={18} /> : <Menu size={18} />}
           </button>
@@ -96,13 +96,13 @@ export default function HeaderClient() {
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
             exit={{ opacity: 0, y: -10 }}
-            className="absolute right-6  overflow-hidden top-15 mt-2 w-44 rounded-xl border border-zinc-200 dark:border-zinc-700 bg-white dark:bg-zinc-900 dark:shadow-amber-50 shadow-lg"
+            className="absolute right-6  overflow-hidden top-15 mt-2 w-44 rounded-xl border border-zinc-200  bg-white dark:bg-zinc-900 dark:shadow-amber-50 shadow-lg"
           >
             {menuItems.map(item => (
               <a
                 key={item.href}
                 href={item.href}
-                className="block px-4 py-2 text-sm hover:bg-zinc-100 dark:hover:bg-zinc-800"
+                className="block px-4 py-2 text-sm hover:bg-zinc-100 "
                 onClick={() => setOpen(false)}
               >
                 {item.label}

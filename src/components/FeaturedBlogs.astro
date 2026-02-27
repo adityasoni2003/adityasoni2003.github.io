@@ -8,14 +8,14 @@ const { blogs } = Astro.props as FeaturedBlogsProps;
 
 <section class="px-4 pt-5 pb-10 max-w-236 xl:pt-10 xl:pb-18 mx-auto">
   <!-- Heading + CTA -->
-  <div class="mb-6 flex items-center justify-between">
-    <h2 class="text-xl md:text-3xl  heading font-bold dark:text-zinc-100">
+  <div class="mb-6 flex items-center justify-between flex-wrap gap-2">
+    <h2 class="text-xl md:text-3xl  heading font-bold ">
       Featured Blogs
     </h2>
 
     <a
       href="/blogs"
-      class="cta"
+      class="cta ml-2"
     >
       View All
       <span class="transition-transform group-hover:translate-x-1">→</span>

@@ -239,7 +239,7 @@
 .word {
   position: absolute;
   left: 0;
-  top: 10;
+  top: 5;
 
   opacity: 0;
   transform: translateY(100%);

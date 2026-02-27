@@ -102,8 +102,8 @@ export default function HeroDust() {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.3 }}
           className="mb-6 flex items-center gap-1 max-w-fit p-1 px-2 rounded-full
-                     bg-white dark:bg-zinc-900
-                     shadow dark:shadow-[0_0_0_1px_rgba(255,255,255,0.08)]"
+                     bg-white 
+                     shadow dark:shadow-amber-50 "
         >
           <span className="relative flex h-1.5 w-1.5">
             <span className="absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75 animate-ping"></span>
