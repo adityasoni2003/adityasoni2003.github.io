@@ -1,9 +1,31 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
-import ProjectCards from "../react/ProjectCard";
-import { getProjects } from "../lib/data";
+import ProjectCard from "../react/ProjectCard";
+import { sanity } from "../lib/sanity";
+import imageUrlBuilder from "@sanity/image-url";
+import type { Project } from "../lib/types";
 
-const projects = await getProjects();
+const builder = imageUrlBuilder(sanity);
+const urlFor = (source: any) =>
+  builder.image(source).width(600).quality(80).url();
+
+const projectsData = await sanity.fetch(`
+  *[_type == "project"]
+  | order(date desc) {
+    title,
+    description,
+    liveUrl,
+    githubUrl,
+    date,
+    featured,
+    thumbnail
+  }
+`);
+
+const projects: Array<Project> = projectsData.map((project: any) => ({
+  ...project,
+  thumbnail: project.thumbnail ? urlFor(project.thumbnail) : ""
+}));
 ---
 
 <BaseLayout title="Projects">
@@ -11,8 +33,8 @@ const projects = await getProjects();
     <h1 class="text-4xl heading font-bold mb-10">My Projects</h1>
 
     <div class="grid gap-6 md:grid-cols-2">
-      {projects?.map((project,ind) => (
-        <ProjectCards project={project} index={ind} client:load />
+      {projects.map((project, ind) => (
+        <ProjectCard project={project} index={ind} client:load />
       ))}
     </div>
   </main>

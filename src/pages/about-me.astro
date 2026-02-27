@@ -1,9 +1,30 @@
 ---
 import BaseLayout from "../layouts/Layout.astro";
 import ImageCarousel from "../components/ImageCarousel.astro";
-import { getAboutImages } from "../lib/data";
+import type { AboutImage } from "../lib/types";
 
-const images = await getAboutImages();
+import { sanity } from "../lib/sanity";
+import imageUrlBuilder from "@sanity/image-url";
+
+const builder = imageUrlBuilder(sanity);
+
+const urlFor = (source: any) =>
+  builder.image(source).url();
+
+// Direct GROQ query
+const data = await sanity.fetch(`
+  *[_type == "aboutImage"] | order(_createdAt asc){
+    type,
+    alt,
+    image
+  }
+`);
+
+const images = data.map((item : {type : string , alt : string , image : string} ) => ({
+  type: item.type,
+  alt: item.alt,
+  src: urlFor(item.image),
+}));
 ---
 
 <BaseLayout title="About Aditya Soni">

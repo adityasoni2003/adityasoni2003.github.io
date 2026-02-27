@@ -10,7 +10,7 @@ export type Blog = {
 export type Project = {
   title: string;
   description: string;
-  liveUrl: string;
+  liveUrl?: string;
   githubUrl?: string; 
   thumbnail: string;
   date: string;  

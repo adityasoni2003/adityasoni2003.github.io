@@ -32,37 +32,27 @@ const featuredBlogs = blogs.map((blog: Blog) => ({
   thumbnail: blog.thumbnail ? urlFor(blog.thumbnail) : ""
 }));
 
-const featuredProjects : Project[] = [
-    {
-      title: "Survey Analytics Platform",
-      description:
-        "An end-to-end survey creation and analytics platform used by market research teams.",
-      liveUrl: "https://survey-platform.live",
-      githubUrl: "https://github.com/adityasoni/survey-platform",
-      thumbnail:
-        "https://images.unsplash.com/photo-1551288049-bebda4e38f71",
-      date: "12/12/2024",
-    },
-    {
-      title: "DSA Practice Tracker",
-      description:
-        "A web app to track DSA problems, patterns, and revision cycles with smart filtering.",
-      liveUrl: "https://dsa-tracker.app",
-      thumbnail:
-        "https://images.unsplash.com/photo-1509228627159-6452c3b52c26",
-      date: "20/10/2024",
-    },
-    {
-      title: "Portfolio CMS",
-      description:
-        "A lightweight CMS built in React to manage blogs and case studies for static websites.",
-      liveUrl: "https://portfolio-cms.dev",
-      githubUrl: "https://github.com/adityasoni/portfolio-cms",
-      thumbnail:
-        "https://images.unsplash.com/photo-1517248135467-4c7edcad34c4",
-      date: "03/08/2024",
-    },
-  ];
+/* ---------------- PROJECTS ---------------- */
+
+const projects = await sanity.fetch(`
+  *[_type == "project" && featured == true]
+  | order(date desc) {
+    title,
+    description,
+    liveUrl,
+    githubUrl,
+    date,
+    featured,
+    thumbnail
+  }
+`);
+
+const featuredProjects: Project[] = projects.map((project: any) => ({
+  ...project,
+  thumbnail: project.thumbnail ? urlFor(project.thumbnail) : ""
+}));
+
+
 export const skills: string[] = [
   "React.js",
   "Next.js",

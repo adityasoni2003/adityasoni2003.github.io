@@ -5,7 +5,7 @@ interface Project {
   title: string;
   description: string;
   thumbnail: string;
-  liveUrl: string;
+  liveUrl?: string;
   githubUrl?: string;
   date: string;
 }
@@ -16,6 +16,14 @@ interface ProjectCardProps {
 }
 
 export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
+
+  const formattedDate = project.date
+    ? new Date(project.date).toLocaleDateString("en-IN", {
+        day: "2-digit",
+        month: "short",
+        year: "numeric",
+      })
+    : "";
   return (
     <motion.div
       initial={{ opacity: 0, y: 24, scale: 0.96 }}
@@ -27,7 +35,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         delay: index * 0.02,
       }}
       whileHover={{ y: -6 }}
-      className="card p-6 cursor-pointer rounded-2xl bg-white border border-zinc-200"
+      className="card p-6 rounded-2xl bg-white border border-zinc-200"
     >
       {/* Thumbnail */}
       <img
@@ -47,8 +55,9 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
       </p>
 
       {/* Links */}
+      {project.githubUrl || project.liveUrl ? 
       <div className="mt-4 flex gap-4 text-sm items-center">
-        <a
+      { project.liveUrl &&  <a
           href={project.liveUrl}
           target="_blank"
           rel="noopener noreferrer"
@@ -56,7 +65,7 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
         >
           <ExternalLink size={14} />
           Live
-        </a>
+        </a>}
 
         {project.githubUrl && (
           <a
@@ -70,10 +79,12 @@ export default function ProjectCard({ project, index = 0 }: ProjectCardProps) {
           </a>
         )}
       </div>
+     : null}
+
 
       {/* Date */}
       <p className="mt-4 text-xs text-zinc-400">
-        Published on {project.date}
+        Published on {formattedDate}
       </p>
     </motion.div>
   );
