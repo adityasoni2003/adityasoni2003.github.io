@@ -92,7 +92,7 @@ export default function HeroDust() {
   const themeKey = useThemeKey();
 
   return (
-    <section className="relative w-full min-h-70 xl:min-h-100 max-w-360 pb-10 pt-15 px-4 mx-auto md:py-18">
+    <section className="relative w-full min-h-70 xl:min-h-100 max-w-360 pb-10 pt-5 px-4 mx-auto md:py-18">
       <div className="relative flex flex-col max-w-236 mx-auto">
 
         {/* OPEN TO WORK */}
@@ -165,7 +165,7 @@ function HeroDescription() {
       variants={container}
       initial="hidden"
       animate="show"
-      className="max-w-[90%] text-center py-[0.35rem] px-[0.6rem] xl:text-left lg:pl-4 lg:mt-5 lg:max-w-[50%] text-lg md:text-xl leading-relaxed"
+      className="max-w-[90%] text-center py-[0.35rem] px-[0.6rem] xl:text-left lg:pl-4 lg:mt-5 lg:max-w-[50%] text-lg leading-relaxed"
     >
       {text.map((word, i) => (
         <motion.span
