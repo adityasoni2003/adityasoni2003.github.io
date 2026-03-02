@@ -228,18 +228,15 @@
     display: inline-flex;
     height: 1em;
     overflow: hidden;
+  min-width: 7ch;
+
   }
 
-.word-container {
-  position: relative;
-  display: inline-block;
-  min-width: 7ch;
-}
 
 .word {
   position: absolute;
   left: 0;
-  top: 5;
+  top: 0;
 
   opacity: 0;
   transform: translateY(100%);
