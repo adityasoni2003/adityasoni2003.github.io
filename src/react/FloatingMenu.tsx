@@ -1,8 +1,11 @@
 import { motion } from "framer-motion";
 import { Github, Linkedin, Mail } from "lucide-react";
 import { useEffect, useState } from "react";
+import LeetCode from "../lib/icons/leetcodeIcon";
+
 
 const menuItems = [
+  { icon: <LeetCode size={20}/>, href: "http://leetcode.com/adityasoni2003"},
   { icon: <Github size={20} />, href: "https://github.com/adityasoni2003" },
   { icon: <Linkedin size={20} />, href: "https://www.linkedin.com/in/adityasoniprofessional/" },
   { icon: <Mail size={20} />, href: "mailto:adityasoniprofessional@gmail.com" },
